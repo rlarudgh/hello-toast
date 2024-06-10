@@ -1,13 +1,25 @@
 "use client";
 
+import { useToast } from "@hooks";
 import { Suspense } from "react";
-
-import { WelcomePage } from "@refinedev/core";
+import { css } from "../../styled-system/css";
 
 export default function IndexPage() {
+  const { showToast } = useToast();
+
+  const handleOnClick = () => {
+    showToast("hello");
+  };
+
   return (
     <Suspense>
-      <WelcomePage />
+      <button className={_Button} onClick={handleOnClick}>
+        누르면 Toast가 보여요
+      </button>
     </Suspense>
   );
 }
+
+const _Button = css({
+  color: "red",
+});
